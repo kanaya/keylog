@@ -15,6 +15,9 @@ class KeycountView extends View
 
 
   add: (keys) ->
+    d = new Date()
+    keys = d + ' ' + keys
+    @textEditorModel.insertText(keys + '\n')
     @count++
     @history = @history[-2..]
     @history.push keys
@@ -23,6 +26,7 @@ class KeycountView extends View
   refresh: () ->
     c = @count
     history = @history
+    @textEditorModel.getBuffer().save()
 
     @keystroke.html $$ ->
       @span class: 'keycount', " " + c
@@ -38,6 +42,9 @@ class KeycountView extends View
     @count = 0
     @history = []
     @on 'click', '.reset', ({target}) => @reset()
+    @textEditorView = document.createElement('atom-text-editor')
+    @textEditorModel = @textEditorView.getModel()
+    @textEditorModel.getBuffer().setPath('/tmp/aaa.txt')
 
   # Tear down any state and detach
   destroy: ->
