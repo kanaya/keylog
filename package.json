@@ -1,8 +1,8 @@
 {
-  "name": "KeyCount",
+  "name": "KeyCountP",
   "main": "./lib/keycount",
-  "version": "0.1.1",
-  "description": "Counts key strokes and displays them in a panel",
+  "version": "0.0.0",
+  "description": "Counts key strokes and displays them in a panel (patched)",
   "keywords": [],
   "activationCommands": {
     "atom-workspace": "keycount:toggle"
